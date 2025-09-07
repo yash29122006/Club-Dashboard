@@ -1,0 +1,1209 @@
+/* AI Zoro Club Dashboard - Light Theme */
+:root {
+    --primary-blue: #2563eb;
+    --secondary-blue: #3b82f6;
+    --accent-cyan: #0891b2;
+    --accent-purple: #7c3aed;
+    --light-bg: #f8fafc;
+    --medium-bg: #f1f5f9;
+    --card-bg: #ffffff;
+    --text-dark: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --success-green: #059669;
+    --warning-orange: #d97706;
+    --error-red: #dc2626;
+    --border-light: #e2e8f0;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--light-bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--card-bg);
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    padding: 40px 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Navigation Styles */
+nav {
+    background: var(--medium-bg);
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border-light);
+    flex-wrap: wrap;
+}
+
+nav button {
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    border: 2px solid var(--border-light);
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+nav button:hover {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+nav button.active {
+    background: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+/* Main Content */
+main {
+    padding: 40px 30px;
+}
+
+section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Club Summary */
+.club-summary {
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    border: 1px solid var(--border-light);
+}
+
+.club-summary h2 {
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.club-summary p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Event Types Grid */
+.event-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.event-type-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid var(--border-light);
+}
+
+.event-type-card:hover {
+    background: var(--medium-bg);
+}
+
+.event-type-card h4 {
+    font-size: 1.3rem;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.event-type-card p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Event Grid */
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.event-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+}
+
+.event-card:hover {
+    background: var(--medium-bg);
+}
+
+.event-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    padding: 25px;
+    text-align: center;
+    position: relative;
+}
+
+.event-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.event-type {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.event-body {
+    padding: 25px;
+}
+
+.event-detail {
+    display: flex;
+    align-items: center;
+    margin: 12px 0;
+    color: var(--text-muted);
+}
+
+.event-detail strong {
+    color: var(--text-dark);
+    min-width: 80px;
+    margin-right: 10px;
+}
+
+.event-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--primary-blue);
+    color: white;
+    flex: 1;
+}
+
+.btn-secondary {
+    background: var(--medium-bg);
+    color: var(--text-secondary);
+    border: 2px solid var(--border-light);
+    flex: 1;
+}
+
+.btn-primary:hover {
+    background: var(--secondary-blue);
+}
+
+.btn-secondary:hover {
+    background: var(--border-light);
+    color: var(--text-dark);
+}
+
+/* FAQ Styles */
+.faq-section {
+    max-width: 800px;
+    margin: 0 auto 40px;
+}
+
+.faq-item {
+    background: var(--card-bg);
+    margin: 15px 0;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--border-light);
+}
+
+.faq-question {
+    padding: 20px 25px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.faq-question:hover {
+    background: var(--medium-bg);
+    color: var(--primary-blue);
+}
+
+.faq-answer {
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    color: var(--text-muted);
+}
+
+.faq-answer.show {
+    padding: 20px 25px;
+    max-height: 200px;
+}
+
+/* Ask Question Form */
+.ask-question {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(6, 182, 212, 0.1));
+    padding: 40px;
+    border-radius: 20px;
+    margin: 40px 0;
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.ask-question h4 {
+    color: var(--success-green);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--border-light);
+    border-radius: 10px;
+    background: var(--card-bg);
+    color: var(--text-dark);
+    font-size: 16px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+/* Team Section */
+.team-section {
+    margin: 60px 0;
+    text-align: center;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.member-card {
+    background: var(--card-bg);
+    padding: 30px 20px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid var(--border-light);
+}
+
+.member-card:hover {
+    background: var(--medium-bg);
+}
+
+.member-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    background: var(--primary-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+}
+
+.member-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.member-role {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+.member-contact {
+    color: var(--primary-blue);
+    font-size: 0.85rem;
+    font-weight: 500;
+    word-break: break-all;
+    margin-bottom: 10px;
+}
+
+.member-social {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+
+.social-link {
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-link:hover {
+    color: var(--primary-blue);
+}
+
+.social-link:first-child:hover {
+    color: #333333; /* GitHub color */
+}
+
+.social-link:last-child:hover {
+    color: #E4405F; /* Instagram color */
+}
+
+.social-link svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Join Club Section */
+.join-club {
+    background: #f3f4f6;
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    margin: 40px 0;
+    border: 1px solid var(--border-light);
+}
+
+.join-club h3 {
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.tagline {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.warning {
+    background: rgba(239, 68, 68, 0.2);
+    color: black;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 25px;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    font-weight: 500;
+}
+
+.hidden {
+    display: none;
+}
+
+.muted-text {
+    color: var(--text-muted);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: var(--card-bg);
+    margin: 5% auto;
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    color: var(--text-dark);
+    border: 1px solid var(--border-light);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: var(--text-muted);
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--primary-blue);
+}
+
+/* Fix modal scrolling */
+body.modal-open {
+    overflow: hidden;
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: rgba(96, 165, 250, 0.5);
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(96, 165, 250, 0.7);
+}
+
+.close:hover {
+    color: var(--error-red);
+}
+
+/* Contact Section */
+.contact-section {
+    background: #000000;
+    color: white;
+    padding: 50px;
+    border-radius: 20px;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.contact-section .section-title {
+    color: white;
+    margin-bottom: 30px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.contact-text {
+    color: #cccccc;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.contact-item {
+    color: #cccccc;
+    font-size: 1rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.instagram-logo {
+    color: #E4405F;
+    vertical-align: middle;
+}
+
+.instagram-link {
+    color: #1DA1F2;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.instagram-link:hover {
+    color: #0d8bd9;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+
+/* Very small mobile screens - split email and phone */
+@media (max-width: 400px) {
+    .contact-text {
+        font-size: 0.85rem;
+        line-height: 1.6;
+    }
+    
+    .contact-text::after {
+        content: "";
+        display: block;
+        margin: 5px 0;
+    }
+    
+    .contact-item {
+        font-size: 0.8rem;
+        gap: 3px;
+    }
+    
+    .instagram-logo {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+    .event-types {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 15px;
+    }
+    
+    .event-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+    
+    .social-link {
+        padding: 5px;
+    }
+    
+    .social-link svg {
+        width: 24px;
+        height: 24px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    header {
+        padding: 30px 20px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    nav {
+        padding: 10px;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    nav button {
+        padding: 10px 16px;
+        font-size: 14px;
+        min-width: 100px;
+    }
+    
+    main {
+        padding: 20px;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    .club-summary {
+        padding: 30px 20px;
+    }
+    
+    .event-types {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .event-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+    }
+    
+    .event-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .join-club {
+        padding: 30px 20px;
+        margin: 30px 0;
+    }
+    
+    .ask-question {
+        padding: 20px;
+    }
+    
+    .modal-content {
+        margin: 5% auto;
+        padding: 25px 15px;
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .event-meta {
+        padding: 15px;
+    }
+    
+    .member-card {
+        padding: 20px 15px;
+    }
+    
+    .member-photo {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+    header {
+        padding: 20px 15px;
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    nav {
+        padding: 8px;
+        gap: 6px;
+    }
+    
+    nav button {
+        padding: 8px 12px;
+        font-size: 13px;
+        min-width: 80px;
+    }
+    
+    main {
+        padding: 15px;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+    
+    .club-summary {
+        padding: 20px 15px;
+        margin-bottom: 25px;
+    }
+    
+    .club-summary h2 {
+        font-size: 1.5rem;
+    }
+    
+    .club-summary p {
+        font-size: 1rem;
+    }
+    
+    .event-type-card {
+        padding: 20px 15px;
+    }
+    
+    .event-type-card h4 {
+        font-size: 1.1rem;
+    }
+    
+    .event-card {
+        border-radius: 15px;
+    }
+    
+    .event-header {
+        padding: 20px 15px;
+    }
+    
+    .event-name {
+        font-size: 1.2rem;
+    }
+    
+    .event-body {
+        padding: 20px 15px;
+    }
+    
+    .event-detail {
+        margin: 8px 0;
+        font-size: 0.9rem;
+    }
+    
+    .btn {
+        padding: 10px 16px;
+        font-size: 13px;
+        width: 100%;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+    }
+    
+    .member-card {
+        padding: 15px 10px;
+    }
+    
+    .member-photo {
+        width: 60px;
+        height: 60px;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+    
+    .member-name {
+        font-size: 1rem;
+    }
+    
+    .member-role {
+        font-size: 0.8rem;
+    }
+    
+    .member-contact {
+        font-size: 0.75rem;
+    }
+    
+    .social-link {
+        padding: 3px;
+    }
+    
+    .social-link svg {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .contact-section {
+        padding: 25px 15px;
+        border-radius: 15px;
+    }
+    
+    .contact-text {
+        font-size: 1rem;
+        word-break: break-word;
+        line-height: 1.4;
+    }
+    
+    .contact-item {
+        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+    
+    .instagram-logo {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .join-club {
+        padding: 25px 15px;
+        border-radius: 15px;
+    }
+    
+    .tagline {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+    
+    .ask-question {
+        padding: 15px;
+        border-radius: 15px;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 15px;
+    }
+    
+    .faq-question {
+        padding: 15px 20px;
+        font-size: 0.95rem;
+    }
+    
+    .modal-content {
+        margin: 2% auto;
+        padding: 20px 15px;
+        width: 98%;
+        max-height: 96vh;
+        border-radius: 15px;
+    }
+    
+    .idea-card {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    
+    .idea-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .idea-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .btn-like, .btn-dislike {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+    }
+    
+    .idea-submission {
+        padding: 20px 15px;
+        border-radius: 10px;
+    }
+    
+    .event-meta {
+        padding: 12px;
+    }
+    
+    .tag {
+        padding: 3px 8px;
+        font-size: 0.75rem;
+        margin: 2px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 320px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+    }
+    
+    nav {
+        padding: 6px;
+        gap: 4px;
+    }
+    
+    nav button {
+        padding: 6px 8px;
+        font-size: 11px;
+        min-width: 60px;
+        border-radius: 20px;
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+    
+    .member-photo {
+        width: 50px;
+        height: 50px;
+        font-size: 1rem;
+    }
+    
+    .member-name {
+        font-size: 0.9rem;
+    }
+    
+    .member-role {
+        font-size: 0.75rem;
+    }
+    
+    .member-contact {
+        font-size: 0.7rem;
+    }
+    
+    .contact-section {
+        padding: 20px 10px;
+    }
+    
+    .contact-text {
+        font-size: 0.9rem;
+        text-align: center;
+        word-break: break-word;
+        line-height: 1.5;
+    }
+    
+    .contact-item {
+        font-size: 0.85rem;
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+    }
+    
+    .instagram-logo {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .modal-content {
+        padding: 15px 10px;
+        margin: 1% auto;
+        width: 99%;
+    }
+    
+    .event-name {
+        font-size: 1rem;
+    }
+    
+    .club-summary h2 {
+        font-size: 1.3rem;
+    }
+    
+    .club-summary p {
+        font-size: 0.9rem;
+    }
+    
+    .tagline {
+        font-size: 1rem;
+    }
+    
+    .btn {
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Better touch targets for mobile */
+@media (max-width: 768px) {
+    .btn, nav button, button {
+        min-height: 44px; /* Apple's recommended minimum touch target */
+        touch-action: manipulation; /* Prevents zoom on double-tap */
+    }
+    
+    /* Improve scrolling performance */
+    body {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Better spacing for touch interaction */
+    .event-buttons {
+        gap: 15px;
+    }
+    
+    .idea-actions button {
+        min-height: 40px;
+        min-width: 40px;
+    }
+    
+    .social-link {
+        padding: 4px;
+        min-height: 32px;
+        min-width: 32px;
+    }
+    
+    .social-link svg {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/* Idea Submission Styles */
+.ideas-list {
+    margin: 20px 0;
+}
+
+.idea-card {
+    background: var(--medium-bg);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-light);
+}
+
+.idea-card h4 {
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.idea-card p {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.idea-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.idea-author {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.idea-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-like, .btn-dislike {
+    background: var(--card-bg);
+    border: 1px solid var(--border-light);
+    padding: 5px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-like:hover {
+    background: #dcfdf7;
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.btn-dislike:hover {
+    background: #fef2f2;
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.idea-submission {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 25px;
+    border: 1px solid var(--border-light);
+}
+
+.idea-submission h4 {
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.tag {
+    display: inline-block;
+    background: var(--primary-blue);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    margin: 3px;
+    font-weight: 500;
+}
+
+.event-meta {
+    background: var(--medium-bg);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border: 1px solid var(--border-light);
+}
+
+.status-open {
+    color: var(--success-green);
+    font-weight: bold;
+}
+
+.status-closed {
+    color: var(--error-red);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .idea-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .idea-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
