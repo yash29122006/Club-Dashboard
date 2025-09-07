@@ -1,3 +1,163 @@
+// Member information data
+const memberData = {
+    yash: {
+        name: "Yash Gupta",
+        role: "President",
+        year: "SE",
+        class: "Comp-A",
+        skills: ["Full-Stack Development", "Machine Learning", "Leadership", "Project Management", "React.js", "Python"],
+        contact: "YG@gmail.com"
+    },
+    aman: {
+        name: "Aman Gupta", 
+        role: "Vice President",
+        year: "SE",
+        class: "Comp-A",
+        skills: ["Backend Development", "Database Design", "Team Coordination", "Node.js", "MongoDB", "DevOps"],
+        contact: "AG@gmail.com"
+    },
+    himanshu: {
+        name: "Himanshu Gupta",
+        role: "Technical Lead", 
+        year: "SE",
+        class: "Comp-A",
+        skills: ["Software Architecture", "System Design", "Code Review", "Java", "Spring Boot","Full-Stack Development"],
+        contact: "HG@gmail.com"
+    },
+    pratham: {
+        name: "Pratham Gupta",
+        role: "Event Coordinator",
+        year: "SE",
+        class: "Comp-A", 
+        skills: ["Event Planning", "Public Speaking", "Social Media", "Communication", "Organization"],
+        contact: "PG@gmail.com"
+    },
+    sumit: {
+        name: "Sumit Gupta",
+        role: "Marketing Head",
+        year: "SE",
+        class: "Comp-A",
+        skills: ["Digital Marketing", "Content Creation", "Brand Management", "Social Media Strategy", "Graphic Design", "Analytics"],
+        contact: "SG@gmail.com"
+    },
+    rishabh: {
+        name: "Rishabh Jaiswal",
+        role: "Secretary", 
+        year: "SE",
+        class: "Comp-A",
+        skills: ["Documentation", "Meeting Management", "Communication", "Record Keeping", "Administrative Skills", "Time Management"],
+        contact: "RJ@gmail.com"
+    }
+};
+
+// Member info modal functions
+function showMemberInfo(memberId) {
+    const member = memberData[memberId];
+    if (!member) return;
+
+    const modalContent = document.getElementById('memberInfoContent');
+    modalContent.innerHTML = `
+        <h2>${member.name}</h2>
+        <div class="member-info-details">
+            <div class="info-section">
+                <h3>Role</h3>
+                <p>${member.role}</p>
+            </div>
+            <div class="info-section">
+                <h3>Year</h3>
+                <p>${member.year}</p>
+            </div>
+            <div class="info-section">
+                <h3>Class</h3>
+                <p>${member.class}</p>
+            </div>
+            <div class="info-section">
+                <h3>Skills</h3>
+                <div class="skills-container">
+                    ${member.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                </div>
+            </div>
+            <div class="info-section">
+                <h3>Contact</h3>
+                <p>${member.contact}</p>
+            </div>
+        </div>
+    `;
+
+    const modal = document.getElementById('memberInfoModal');
+    modal.style.display = 'block';
+}
+
+function closeMemberInfo() {
+    const modal = document.getElementById('memberInfoModal');
+    modal.style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.addEventListener('click', function(event) {
+    const modal = document.getElementById('memberInfoModal');
+    if (event.target === modal) {
+        closeMemberInfo();
+    }
+    
+    const teamModal = document.getElementById('teamDetailsModal');
+    if (event.target === teamModal) {
+        closeTeamDetails();
+    }
+});
+
+// Team Details Modal Functions
+function showTeamDetails() {
+    const container = document.getElementById('teamDetailsContainer');
+    
+    let detailsHTML = '';
+    Object.values(memberData).forEach(member => {
+        // Generate initials for the photo
+        const initials = member.name.split(' ').map(word => word.charAt(0)).join('');
+        
+        detailsHTML += `
+            <div class="team-member-detail">
+                <div class="member-header">
+                    <h4>${member.name}</h4>
+                    <div class="member-photo-small">${initials}</div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Year:</span>
+                    <span class="detail-value">${member.year}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Class:</span>
+                    <span class="detail-value">${member.class}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Role:</span>
+                    <span class="detail-value">${member.role}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Skills:</span>
+                    <span class="detail-value">${member.skills.join(', ')}</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Contact:</span>
+                    <span class="detail-value">${member.contact}</span>
+                </div>
+            </div>
+        `;
+    });
+    
+    container.innerHTML = detailsHTML;
+    
+    const modal = document.getElementById('teamDetailsModal');
+    modal.style.display = 'block';
+    document.body.classList.add('modal-open');
+}
+
+function closeTeamDetails() {
+    const modal = document.getElementById('teamDetailsModal');
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+}
+
 const CONFIG = {
     animationDuration: 300,
     scrollOffset: 80,
@@ -312,9 +472,8 @@ const navigation = {
                 behavior: 'smooth',
                 block: 'start'
             });
-            // Set active button to members
-            document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('membersBtn').classList.add('active');
+            // Set active button to members using our method
+            this.setActiveButton('teamSection');
         }
     },
 
@@ -323,7 +482,8 @@ const navigation = {
             dashboardSection: 'dashboardBtn',
             upcomingSection: 'upcomingBtn',
             pastSection: 'pastBtn',
-            faqSection: 'faqBtn'
+            faqSection: 'faqBtn',
+            teamSection: 'membersBtn'
         };
 
         // Remove active class from all buttons
@@ -337,21 +497,47 @@ const navigation = {
     },
 
     setActiveSection() {
-        // Set dashboard as default active section
-        this.setActiveButton('dashboardSection');
+        // Check current scroll position and set appropriate active button
+        this.handleScroll();
     },
 
     handleScroll() {
         const sections = ['dashboardSection', 'upcomingSection', 'pastSection', 'faqSection'];
-        const scrollPosition = window.scrollY + CONFIG.scrollOffset;
+        const scrollPosition = window.scrollY;
+        let activeSection = 'dashboardSection'; // Default to dashboard
 
-        for (let i = sections.length - 1; i >= 0; i--) {
-            const section = document.getElementById(sections[i]);
-            if (section && section.offsetTop <= scrollPosition) {
-                this.setActiveButton(sections[i]);
-                break;
+        // If we're at the very top, always show dashboard as active
+        if (scrollPosition < 100) {
+            this.setActiveButton('dashboardSection');
+            return;
+        }
+
+        // Check if we're in the team section first
+        const teamSection = document.querySelector('.team-section');
+        if (teamSection) {
+            const teamTop = teamSection.offsetTop - 150;
+            const teamBottom = teamTop + teamSection.offsetHeight;
+            
+            if (scrollPosition >= teamTop) {
+                this.setActiveButton('teamSection');
+                return;
             }
         }
+
+        // Find the section that's currently most visible
+        for (let i = 0; i < sections.length; i++) {
+            const section = document.getElementById(sections[i]);
+            if (section) {
+                const sectionTop = section.offsetTop - 100; // Offset for navigation height
+                
+                // If we're past this section's start, it could be the active one
+                if (scrollPosition >= sectionTop) {
+                    activeSection = sections[i];
+                }
+            }
+        }
+        
+        this.setActiveButton(activeSection);
     }
 };
 
